@@ -76,8 +76,8 @@ public class Analytics extends AppCompatActivity {
                     return;
                 Log.i("VAL SELECTED",
                         "Value: " + e.getY() + ", index: " + h.getX()
-                                + ", DataSet index: " + h.getDataSetIndex());
-                Toast.makeText(getApplicationContext(),""+e.getY()+"index"+h.getY(),Toast.LENGTH_LONG).show();
+                                + ", DataSet index: " + e.getX());
+                Toast.makeText(getApplicationContext(),""+e.getY()+"index"+h.getX(),Toast.LENGTH_LONG).show();
 
             }
 
