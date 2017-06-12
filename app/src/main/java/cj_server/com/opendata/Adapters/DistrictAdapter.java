@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import cj_server.com.opendata.Pojo.Data;
@@ -19,6 +20,7 @@ import cj_server.com.opendata.R;
 public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.ViewHolder>{
     private Context context;
     private ArrayList<Data>dataList;
+    private DecimalFormat formatter;
 
     public DistrictAdapter(Context context, ArrayList<Data> dataList) {
         this.context = context;
@@ -33,9 +35,16 @@ public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        formatter = new DecimalFormat("#,###,###");
         Data data  = dataList.get(position);
         holder.m_districtName.setText(data.getDistrict());
-        holder.m_population.setText(String.valueOf(data.getTotal_population()));
+        if(data.getTotal_population()<=0){
+            holder.m_population.setText("null");
+        }else {
+            holder.m_population.setText(formatter.format(data.getTotal_population()));
+
+
+        }
 
     }
 

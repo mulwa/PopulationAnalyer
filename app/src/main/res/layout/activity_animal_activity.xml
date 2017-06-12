@@ -5,11 +5,12 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="cj_server.com.opendata.MainActivity">
+    tools:context="cj_server.com.opendata.Animal_activity">
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/coordinatorLayout">
+
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,12 +49,11 @@
                 android:text="Try Again"/>
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/districtsList"
+                android:id="@+id/animal_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </RelativeLayout>
-
 
     </android.support.design.widget.CoordinatorLayout>
 

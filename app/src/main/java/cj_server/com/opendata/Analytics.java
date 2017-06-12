@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -18,6 +19,7 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import cj_server.com.opendata.General__Functions.Constants;
@@ -32,6 +34,8 @@ public class Analytics extends AppCompatActivity {
     private String location;
     private String  county;
     private PieChart mChart;
+    private TextView m_female, m_male, m_total;
+    private TextView m_location,m_county,m_category;
 
 
     @Override
@@ -46,8 +50,29 @@ public class Analytics extends AppCompatActivity {
             getSupportActionBar().setTitle(getIntent().getStringExtra(Constants.DISTRICT));
 
         }
+        m_female = (TextView)findViewById(R.id.tv_female);
+        m_male  =  (TextView) findViewById(R.id.tv_men);
+        m_total = (TextView)findViewById(R.id.tv_total);
+        m_county = (TextView)findViewById(R.id.tv_county);
+        m_location = (TextView)findViewById(R.id.tv_location);
+
         male = getIntent().getIntExtra(Constants.NO_OF_MALE,1);
         female = getIntent().getIntExtra(Constants.NO_OF_FEMALE,1);
+        total = getIntent().getIntExtra(Constants.TOTAL_POPULATION,1);
+        location =  getIntent().getStringExtra(Constants.LOCATION);
+        county  =  getIntent().getStringExtra(Constants.COUNTY);
+        category = getIntent().getStringExtra(Constants.CATEGORY);
+
+        DecimalFormat formatter = new DecimalFormat("#,###,###");
+
+
+        m_total.setText(formatter.format(total));
+        String formatedmale = formatter.format(male);
+        m_male.setText(formatedmale);
+        m_female.setText(formatter.format(female));
+        m_location.setText(location);
+        m_county.setText(category);
+
 
         Log.d("Male", String.valueOf(male));
         mChart = (PieChart) findViewById(R.id.chart);
